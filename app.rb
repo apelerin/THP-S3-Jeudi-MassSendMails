@@ -1,8 +1,17 @@
-$:.unshift File.expand_path("./../lib/app", __FILE__)
-require "bundler"
-require "townhalls_scrapper.rb"
-require 'open-uri'
-require "townhalls_adder_to_db.rb"
+$:.unshift File.expand_path("./../lib/views", __FILE__)
+require 'bundler'
+require 'index.rb'
+require 'done.rb'
+
+class Perform
+  def launch_program
+    index.rb
+  end 
+
+end 
+
+app = Perform.new
+app.launch program  
 
 
 #add = AdderToDb.new 

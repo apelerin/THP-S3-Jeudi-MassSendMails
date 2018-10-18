@@ -4,7 +4,7 @@ require 'pry'
 require 'csv'
 require 'nokogiri'
 require 'open-uri'
-Dotenv.load
+Dotenv.load('../../.env')
 
 class TwitterBot
 

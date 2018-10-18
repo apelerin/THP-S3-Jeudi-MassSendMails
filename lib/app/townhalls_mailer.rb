@@ -8,9 +8,11 @@ require 'csv'
 
 Dotenv.load
 
-class EMail
+# Classe contenant les méthodes de récupération et d'envois de mails
+class Mailsender
   attr_accessor :gmail, :hsh_mairies
 
+# Utilisation de la gem 'gmail' pour se connecter à une boite mail, avec USERNAME comme adresse mail, puis lancement des méthodes
   def initialize
     @gmail = Gmail.connect(ENV['USERNAME'], ENV['PASSWORD'])
     @hsh_mairies = {}
@@ -18,6 +20,7 @@ class EMail
     send_mails
   end
 
+# Méthode de récupération dans le fichier csv contenant des données précédemment scrappées, et les mets dans un hash avec row[0] en nom et row[1] en email
   def salvage_mail
     CSV.foreach('../db/townhalls.csv') do |row|
       @hsh_mairies.store(row[0], row[1])
@@ -25,11 +28,12 @@ class EMail
     puts @hsh_mairies
   end
 
+# Méthode d'envois de mail, le hash est décomposé pour chaque couple en name et mail, le mail est utilisé en destinataire et le name dans le message html, toujours avec des méthodes de la gem gmail
   def send_mails
     @hsh_mairies.each do |name, mail|
       gmail.deliver do 
         to mail
-        subject "tasty"
+        subject "J'apprend à coder!"
         text_part do
           body "This is gorgeous"
         end
@@ -47,5 +51,3 @@ Charles, co-fondateur de The Hacking Project pourra répondre à toutes vos ques
     end
   end
 end
-
-launch = EMail.new

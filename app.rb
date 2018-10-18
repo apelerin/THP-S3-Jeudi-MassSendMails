@@ -1,15 +1,22 @@
 $:.unshift File.expand_path("./../lib/app", __FILE__)
 require "bundler"
 require "townhalls_scrapper.rb"
-require "townhalls_adder_to_db.rb"
+require 'open-uri'
+
+#require "townhalls_adder_to_db.rb"
 
 
-#scrapper93 = Scrapper.new
-#puts scrapper93.get_all_the_urls_of_region_townhalls('http://www.annuaire-des-mairies.com/seine-saint-denis.html',93)
+#add = AdderToDb.new 
+#add.save_the_scrapper_in_csv
 
-#scrapper = Scrapper.new 
-#scrapper.array_of_all_townhalls = scrapper.compute
-#puts scrapper.array_of_all_townhalls
+towns = [
+  'http://www.annuaire-des-mairies.com/seine-saint-denis.html',
+  'http://www.annuaire-des-mairies.com/seine-et-marne.html',
+  'http://www.annuaire-des-mairies.com/seine-et-marne-2.html', 
+  'http://www.annuaire-des-mairies.com/seine-et-marne-3.html', 
+  'http://www.annuaire-des-mairies.com/gard.html',
+  'http://www.annuaire-des-mairies.com/gard-2.html'
+]
 
-add = AdderToDb.new 
-add.save_the_scrapper_in_csv
+scrapper = Scrapper.new(towns)
+puts scrapper.compute

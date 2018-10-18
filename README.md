@@ -33,7 +33,7 @@ Le dossier <strong>app</strong> contient les programmes:
 ({:name => NOM, :townhall_mail => MAIL, :zip_code => DEPARTEMENT}) les infos attendues.
 - <strong>townhalls_mailer.rb</strong>:
 - <strong>townhalls_adder_to_db.rb</strong>: ce programme crée un objet de la classe Scrapper et met tous les hashes récupérés dans le fichier database.csv
-- <strong>townhalls_follower.rb</strong>: ce programme se connecte à un compte Twitter grâce à l'API Twitter. Ensuite, l'idée est de récupérer le nom des mairies contenues dans le fichier database.csv. A partir de là, le programme passe par Google et par Twitter pour recupérer les handles. Ces handles sont ensuite copiés (parce que oui, il faut bien les garder sous le coude ;)), on follow directement les comptes Twitter récupérés ! Le compte que nous avons est le suivant : 
+- <strong>townhalls_follower.rb</strong>: ce programme se connecte à un compte Twitter grâce à l'API Twitter. Ensuite, l'idée est de récupérer le nom des mairies contenues dans le fichier database.csv. A partir de là, le programme passe par Google et par Twitter pour recupérer les handles. Ces handles sont ensuite copiés (parce que oui, il faut bien les garder sous le coude ;)), puis pour terminer on follow directement les comptes Twitter récupérés ! Le bot que nous avons utilisé est [@happen_next](https://twitter.com/happen_next?lang=fr) et pour voir les comptes suivis, c'est par [ici](https://twitter.com/following?lang=fr) (nous en avons suivi que quelques uns car nous avons des restrictions côté API) !
 
 Le dossier view contient les programmes:
 - <strong>done.rb</strong>:

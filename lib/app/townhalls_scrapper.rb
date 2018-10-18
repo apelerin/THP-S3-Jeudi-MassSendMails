@@ -27,14 +27,11 @@ class Scrapper
 		get_townhalls_URL.xpath('//a[@class = "lientxt"]').each do |url| #Solution avec XPATH autrement au-dessus en commentrequire "spreadsheet_manager.rb"
 			link = url['href']
 			link[0] = '' #On enlève les points sur les URLs récupérées
-			link = "http://annuaire-des-mairies.com#{link}" #On formatte au bon format d'URL
-      hash_townhall_info = {:name => url.text, :townhall_mail => get_the_email_of_a_townhall_from_its_webpage(link), :zip_code => zip} #Création de hash
-        get_townhalls_URL.css('.lientitre').each do |zipcode|
-          zipcode = zipcode.text
-          zip_array = zipcode.split
-          zip_array = zip_array.pop
-          hash_townhall_info[:zip_code] = zip_array
-        end 
+      link = "http://annuaire-des-mairies.com#{link}" #On formatte au bon format d'URL
+      zipcode = get_townhalls_URL.css('.lientitre').text
+      zip_array = zipcode.split
+      zip_array = zip_array.pop
+      hash_townhall_info = {:name => url.text, :townhall_mail => get_the_email_of_a_townhall_from_its_webpage(link), :zip_code => zip_array} #Création de hash 
 			@array_of_emails << hash_townhall_info #Ajout du hash dans un tableau
       end 
       return @array_of_emails

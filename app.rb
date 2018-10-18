@@ -16,7 +16,7 @@ towns = [
   'http://www.annuaire-des-mairies.com/seine-et-marne-3.html', 
   'http://www.annuaire-des-mairies.com/gard.html',
   'http://www.annuaire-des-mairies.com/gard-2.html']
-
+ 
 
 scrapper = Scrapper.new(towns)
 puts scrapper.compute

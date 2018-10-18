@@ -4,15 +4,12 @@ require 'index.rb'
 require 'done.rb'
 
 class Perform
+
   def launch_program
-    index.rb
+		Index.new
   end 
 
 end 
 
 app = Perform.new
-app.launch program  
-
-
-#add = AdderToDb.new 
-#add.save_the_scrapper_in_csv
+app.launch_program  

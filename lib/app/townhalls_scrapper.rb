@@ -14,8 +14,12 @@ class Scrapper
   end
 
 	#Méthode pour récupérer l'adresse email d'une mairie à partir de sa page
-	def get_the_email_of_a_townhall_from_its_webpage(page_url)
-		data = Nokogiri::HTML(open(page_url))
+  def get_the_email_of_a_townhall_from_its_webpage(page_url) 
+    begin
+    data = Nokogiri::HTML(open(page_url))
+    rescue OpenURI::HTTPError => e
+    return nil
+    end 
 		data.xpath("/html/body/div[1]/main/section[2]/div/table/tbody/tr[4]/td[2]").each do |node|
 		return node.text
 		end
@@ -40,10 +44,12 @@ class Scrapper
   def compute
     @array_of_all_townhalls = []
     @array_urls.each do |url|
-      @array_of_all_townhalls += get_all_the_urls_of_region_townhalls(url)
-    end 
+      @array_of_all_townhalls += get_all_the_urls_of_region_townhalls(url)  
+      end 
     @array_of_all_townhalls = @array_of_all_townhalls.flatten      
   end  
+
+
 
   end
 

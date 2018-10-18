@@ -8,8 +8,8 @@ class AdderToDb
   towns = [
     'http://www.annuaire-des-mairies.com/seine-saint-denis.html',
     'http://www.annuaire-des-mairies.com/seine-et-marne.html',
-    'http://www.annuaire-des-mairies.com/seine-et-marne.html-2', 
-    'http://www.annuaire-des-mairies.com/seine-et-marne.html-2', 
+    'http://www.annuaire-des-mairies.com/seine-et-marne-2.html', 
+    'http://www.annuaire-des-mairies.com/seine-et-marne-3.html', 
     'http://www.annuaire-des-mairies.com/gard.html',
     'http://www.annuaire-des-mairies.com/gard-2.html'
   ]

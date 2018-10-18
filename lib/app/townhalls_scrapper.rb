@@ -1,8 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
 require 'rubygems'
-require 'pry'
-
 
 
 class Scrapper
@@ -38,7 +36,6 @@ class Scrapper
       hash_townhall_info = {:name => url.text, :townhall_mail => get_the_email_of_a_townhall_from_its_webpage(link), :zip_code => zip_array} #Création de hash 
       @array_of_emails << hash_townhall_info #Ajout du hash dans un tableau
       end 
-      #eturn @array_of_emails
     end 
   
   def compute
@@ -48,8 +45,4 @@ class Scrapper
     return @array_of_emails      
   end  
 
-
-
-  end
-
-  #binding.pry
+end

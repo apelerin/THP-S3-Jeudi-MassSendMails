@@ -1,6 +1,7 @@
 $:.unshift File.expand_path("./../lib/app", __FILE__)
 require "bundler"
 require "townhalls_scrapper.rb"
+#require "townhalls_adder_to_db.rb"
 
 
 #scrapper93 = Scrapper.new

@@ -38,7 +38,7 @@ class Scrapper
     scrapper93 = Scrapper.new 
     scrapper77= Scrapper.new 
     scrapper30 = Scrapper.new 
-    @array_of_all_townhalls = scrapper93.get_all_the_urls_of_region_townhalls('http://www.annuaire-des-mairies.com/seine-saint-denis.html',93) #+ scrapper77.get_all_the_urls_of_region_townhalls('http://www.annuaire-des-mairies.com/seine-et-marne.html',77) + scrapper93.get_all_the_urls_of_region_townhalls('http://www.annuaire-des-mairies.com/gard.html',30)
+    @array_of_all_townhalls = scrapper93.get_all_the_urls_of_region_townhalls('http://www.annuaire-des-mairies.com/seine-saint-denis.html',93) + scrapper77.get_all_the_urls_of_region_townhalls('http://www.annuaire-des-mairies.com/seine-et-marne.html',77) + scrapper93.get_all_the_urls_of_region_townhalls('http://www.annuaire-des-mairies.com/gard.html',30)
     return @array_of_all_townhalls = @array_of_all_townhalls.flatten     
   end  
 

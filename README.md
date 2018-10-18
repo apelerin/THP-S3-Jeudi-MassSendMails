@@ -47,7 +47,7 @@ Le dossier <strong>app</strong> contient les programmes:
 
 Le dossier view contient les programmes:
 - <strong>index.rb</strong>: qui lance une petite interface
-- <strong>done.rb</strong>: qui vous dit <a href=https://www.youtube.com/watch?v=0obJfkU9xB4>au revoir</a>.
+- <strong>done.rb</strong>: qui vous dit [au revoir](https://www.youtube.com/watch?v=0obJfkU9xB4).
 
 
 ## Ce qui a été fait:

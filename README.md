@@ -22,7 +22,7 @@ Dans ce dossier vous allez tout d'abord trouver les fichiers suivants :
 - le <strong>Gemfile.lock</strong> qui accompagne le Gemfile (c'est comme les témoins de Jéhovah ou les paires de...)
 - le fichier <strong> app.rb </strong> qui vous permettra de lancer le programme
 
-Vous trouverez également un dossier <strong>db</strong> contenant le fichier <strong>townhalls.csv</strong> qui contient les noms des mairies, leur adresse mail et leur département.
+Vous trouverez également un dossier <strong>db</strong> contenant le fichier <strong>townhalls.csv</strong> qui contient les noms des mairies, leur adresse mail, leur département ainsi que leur compte Twitter associé (quand c'est possible, hein !).
 
 Il y a enfin un dossier lib, contenant deux sous-dossiers:
 - app
@@ -33,7 +33,7 @@ Le dossier <strong>app</strong> contient les programmes:
 ({:name => NOM, :townhall_mail => MAIL, :zip_code => DEPARTEMENT}) les infos attendues.
 - <strong>townhalls_mailer.rb</strong>:
 - <strong>townhalls_adder_to_db.rb</strong>: ce programme crée un objet de la classe Scrapper et met tous les hashes récupérés dans le fichier database.csv
-- <strong>townhalls_follower.rb</strong>:
+- <strong>townhalls_follower.rb</strong>: ce programme se connecte à un compte Twitter grâce à l'API Twitter. Ensuite, l'idée est de récupérer le nom des mairies contenues dans le fichier database.csv. A partir de là, le programme passe par Google et par Twitter pour recupérer les handles. Ces handles sont ensuite copiés (parce que oui, il faut bien les garder sous le coude ;)), on follow directement les comptes Twitter récupérés ! Le compte que nous avons est le suivant : 
 
 Le dossier view contient les programmes:
 - <strong>done.rb</strong>:

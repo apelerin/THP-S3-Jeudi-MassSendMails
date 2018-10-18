@@ -41,7 +41,7 @@ class TwitterBot
 
 	#On récupérer le nom des villes du CSV
 	def get_city_name_from_file
-		CSV.foreach("../db/townhalls.csv") do |line|
+		CSV.foreach("../../db/townhalls.csv") do |line|
 			@city_names_array << line[0]
 		end
 	end
@@ -82,7 +82,7 @@ class TwitterBot
 		#On va tout d'abord récupérer les données du fichier pour les mettre dans un array tout en ajoutant les handles
 		complete_line_for_CSV = []
 		count = 0
-		File.open("../db/townhalls.csv") do |read|
+		File.open("../../db/townhalls.csv") do |read|
 			read.each_line do |line|
 				complete_line_for_CSV << line.delete("\n")+",#{@townhall_twitter_handle[count]}"
 				count += 1
@@ -91,7 +91,7 @@ class TwitterBot
 
 		#On prend toutes les valeurs du tableau et on les ajouter dans le fichier .csv
 		count = 0
-		File.open("../db/townhalls.csv", "w") do |file|
+		File.open("../../db/townhalls.csv", "w") do |file|
 			while count < complete_line_for_CSV.size
 				file.write(complete_line_for_CSV[count])
 				file.puts
@@ -101,18 +101,19 @@ class TwitterBot
 	end
 
 	def get_handles_from_csv
-		f = CSV.foreach("../db/townhalls.csv") do |line|
+		f = CSV.foreach("../../db/townhalls.csv") do |line|
 			if line[3] != nil
 				@townhall_twitter_handle_via_csv << line[3]
 			end
 		end
+		puts @townhall_twitter_handle_via_csv
 	end
 
 end
 
-#twitter_bot = TwitterBot.new
+twitter_bot = TwitterBot.new
 #twitter_bot.get_city_name_from_file
 #twitter_bot.get_townhall_handle
 #twitter_bot.add_a_handle_column_in_csv
-#twitter_bot.get_handles_from_csv
-#twitter_bot.follow_mass
+twitter_bot.get_handles_from_csv
+twitter_bot.follow_mass

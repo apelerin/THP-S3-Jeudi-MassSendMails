@@ -35,7 +35,7 @@ class TwitterBot
 					next
 				end
 		end
-		puts "----- OPERATION DONE. YOU FOLLOWED ALL THE HANDLES OF ANALYZED TOWNHALLS ------"
+		#puts "----- OPERATION DONE. YOU FOLLOWED ALL THE HANDLES OF ANALYZED TOWNHALLS ------"
 
 	end
 
@@ -115,5 +115,5 @@ twitter_bot = TwitterBot.new
 #twitter_bot.get_city_name_from_file
 #twitter_bot.get_townhall_handle
 #twitter_bot.add_a_handle_column_in_csv
-twitter_bot.get_handles_from_csv
-twitter_bot.follow_mass
+#twitter_bot.get_handles_from_csv
+#twitter_bot.follow_mass

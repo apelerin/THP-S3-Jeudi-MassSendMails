@@ -15,9 +15,13 @@ class AdderToDb
   ]
 
   scrapper = Scrapper.new(towns)
-  scrapper.array_of_all_townhalls = scrapper.compute
+  begin
+  scrapper.array_of_emails = scrapper.compute
+  rescue OpenURI::HTTPError => e
+  return nil
+  end 
   CSV.open("db/database.csv", "wb") do |csv|
-    scrapper.array_of_all_townhalls.each do |hashes|
+    scrapper.array_of_emails.each do |hashes|
       csv <<	["#{hashes[:name]}", "#{hashes[:townhall_mail]}", "#{hashes[:zip_code]}"]
     end
   end

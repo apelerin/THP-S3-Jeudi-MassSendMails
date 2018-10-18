@@ -26,7 +26,7 @@ class AdderToDb
   return nil
   end 
   #Insertion des mairies, mails et départements dans un tableau csv
-  CSV.open("db/database.csv", "wb") do |csv|
+  CSV.open("db/townhalls.csv", "wb") do |csv|
     scrapper.array_of_emails.each do |hashes|
       csv <<	["#{hashes[:name]}", "#{hashes[:townhall_mail]}", "#{hashes[:zip_code]}"]
     end

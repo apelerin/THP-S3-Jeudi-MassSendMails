@@ -110,10 +110,3 @@ class TwitterBot
 	end
 
 end
-
-twitter_bot = TwitterBot.new
-#twitter_bot.get_city_name_from_file
-#twitter_bot.get_townhall_handle
-#twitter_bot.add_a_handle_column_in_csv
-#twitter_bot.get_handles_from_csv
-#twitter_bot.follow_mass

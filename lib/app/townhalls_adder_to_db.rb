@@ -13,6 +13,7 @@ class AdderToDb
     'http://www.annuaire-des-mairies.com/gard.html',
     'http://www.annuaire-des-mairies.com/gard-2.html'
   ]
+=end
   scrapper = Scrapper.new(towns)
   scrapper.array_of_all_townhalls = scrapper.compute
   CSV.open("db/database.csv", "wb") do |csv|

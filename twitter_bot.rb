@@ -27,8 +27,13 @@ class TwitterBot
 	#Cette méthode va suivre tous les handles présent dans le fichier CSV
 	def follow_mass
 
+		#On gère l'exception pour les comptes Twitter qui n'existent plus
 		@townhall_twitter_handle_via_csv.each do |handle|
-		@session_twitter.follow("#{handle}")
+			begin
+			@session_twitter.follow("#{handle}")		
+				rescue Twitter::Error::NotFound => e
+					next
+				end
 		end
 		puts "----- OPERATION DONE. YOU FOLLOWED ALL THE HANDLES OF ANALYZED TOWNHALLS ------"
 
@@ -54,9 +59,19 @@ class TwitterBot
 			townhall_twitter_URL = URI.encode(text_URL.css('cite')[0].text)
 			townhall_twitter_URL = URI.parse(townhall_twitter_URL)
 
-			twitter_URL = Nokogiri::HTML(open(townhall_twitter_URL))			
+			#On a géré les pages de plusieurs manières : condition if quand ce ne sont pas des pages Twitter, exception quand on nous retourne une page 404, condition if si on est pas sur la page de profil Twitter attendue
+			if townhall_twitter_URL.to_s.include?("twitter") == true
 
-			@townhall_twitter_handle << "#{twitter_URL.css('b.u-linkComplex-target')[0].text}"
+				begin
+					twitter_URL = Nokogiri::HTML(open(townhall_twitter_URL))			
+				rescue OpenURI::HTTPError => e
+					next
+				end
+				if twitter_URL.css('b.u-linkComplex-target')[0].nil? == false
+					puts name
+					@townhall_twitter_handle << twitter_URL.css('b.u-linkComplex-target')[0].text
+				end
+			end
 
 		end
 	end
@@ -86,14 +101,11 @@ class TwitterBot
 	end
 
 	def get_handles_from_csv
-
-
 		f = CSV.foreach("townhalls.csv") do |line|
-			@townhall_twitter_handle_via_csv << line[3]
+			if line[3] != nil
+				@townhall_twitter_handle_via_csv << line[3]
+			end
 		end
-		#@townhall_twitter_handle_via_csv.each do |value|
-
-		#end
 	end
 
 end
@@ -102,5 +114,5 @@ twitter_bot = TwitterBot.new
 twitter_bot.get_city_name_from_file
 twitter_bot.get_townhall_handle
 twitter_bot.add_a_handle_column_in_csv
-twitter_bot.get_handles_from_csv
-twitter_bot.follow_mass
+#twitter_bot.get_handles_from_csv
+#twitter_bot.follow_mass
